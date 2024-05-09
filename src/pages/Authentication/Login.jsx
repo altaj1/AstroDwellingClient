@@ -13,7 +13,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  const {signInWithGoogle} = useAuth()
+  const {signInWithGoogle,  signIn} = useAuth()
  
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setLoading] = useState(false);
@@ -73,7 +73,7 @@ const Login = () => {
       return;
     }
 
-    loginUser(email, password)
+    signIn(email, password)
       .then((res) => {
         setLoading(isLoading);
         notify();

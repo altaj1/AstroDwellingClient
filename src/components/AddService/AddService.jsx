@@ -1,18 +1,47 @@
-import React from 'react';
+
 import { Typewriter } from 'react-simple-typewriter';
 import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddService = () => {
-    const {user} = useAuth()
+    const {user} = useAuth();
+    // const  navigate = useNavigate()
     console.log(user)
     const notify = () => toast("Congratulations Added Successfully!!");
     
 
-    const handelSubmitt = (e)=>{
+    const handelSubmitt =async (e)=>{
         e.preventDefault();
 
         const form = e.target;
+        const serviceImg = form.ServiceImg.value
+        const serviceName = form.ServiceName.value
+        const price = form.Price.value
+        const area = form.area.value
+        const description = form.description.value
+        const servicesData = {serviceImg, serviceName, price, area, description,
+                           buyer: {
+                             email:user.email,
+                             name: user?.displayName,
+                             photo: user?.photoURL,
+                           },
+        }
+        
+        console.log(servicesData)
+
+        try {
+            const { data } = await axios.post(
+              `${import.meta.env.VITE_API_URL}/services`,
+              servicesData
+            )
+            console.log(data)
+            notify()
+            // navigate('/my-posted-jobs')
+          } catch (err) {
+            console.log(err)
+          }
     }
 
 
@@ -87,7 +116,7 @@ const AddService = () => {
                   <label className="text-sm"> Price</label>
                   <input
                     name="Price"
-                    type="url"
+                    type="number"
                     placeholder="      Price..."
                     className="w-full rounded-md text-black  focus:outline-none"
                   />
@@ -97,7 +126,7 @@ const AddService = () => {
                   <label className="text-sm">Service Area</label>
                   <input
                     name="area"
-                    type="number"
+                    type="text"
                     placeholder="    Service Area"
                     className="w-full rounded-md text-black  focus:outline-none"
                   />
