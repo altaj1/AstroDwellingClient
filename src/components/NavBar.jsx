@@ -1,0 +1,195 @@
+import { useEffect } from "react";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { TbLayoutNavbarExpand } from "react-icons/tb";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+
+const NavBar = ({ setDarkMode, darkMode }) => {
+  const { user, setUser, logOut } = useAuth();
+
+  const listItems = (
+    <div className=" lg:flex  items-center gap-7">
+      <div className="flex  md:flex-row md:gap-6 flex-col lg:flex-row lg:gap-7 lg:space-y-0 space-y-4 ">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-400  font-bold lg:mt-0 mt-4"
+              : "font-bold mt-4 lg:mt-0"
+          }
+        >
+          Home
+        </NavLink>
+
+        <div className="dropdown w-full " >
+          <NavLink to='#'
+            tabIndex={0}
+            role="button"
+            className={({ isActive }) =>
+              !isActive
+                ? "text-blue-500 font-bold lg:mt-0 mt-4"
+                : "font-bold mt-4 lg:mt-0"
+            }
+          >
+            Dashboard
+          </NavLink>
+          <ul tabIndex={0} className="dropdown-content z-[1] menu  w-48 space-y-5 ">
+            <NavLink
+              to="/addservice"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 font-bold lg:mt-0 mt-4"
+                  : "font-bold mt-4 lg:mt-0 text-pink-400"
+              }
+            >
+               Add Service
+            </NavLink>
+            <NavLink
+              to="/manageservice"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 font-bold lg:mt-0 mt-4"
+                  : "font-bold mt-4 lg:mt-0 text-pink-400"
+              }
+            >
+              Manage Service
+            </NavLink>
+            <NavLink
+              to="/booked-services"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 font-bold lg:mt-0 mt-4"
+                  : "font-bold mt-4 lg:mt-0 text-pink-400"
+              }
+            >
+              Booked-Services
+            </NavLink>
+            <NavLink
+              to="/service-to-do"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 font-bold lg:mt-0 mt-4"
+                  : "font-bold mt-4 lg:mt-0 text-pink-400"
+              }
+            >
+              Service-To-Do
+            </NavLink>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+  );
+  console.log(user);
+  useEffect(() => {
+    if (user) {
+      setUser(user);
+    }
+  }, [user]);
+  return (
+    <div className="navbar shadow-md top-0  z-50  bg-base-100 lg:pl-72 lg:pr-72  fixed">
+      <div className="navbar-start lg:pl-14">
+        <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost md:hidden lg:hidden"
+          >
+            <img
+              className="lg:h-20 md:h-16 h-9 "
+              src="https://i.ibb.co/9tTHdQG/nav-Sm-img-removebg-preview.png"
+              alt=""
+            />
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2    "
+          >
+            {listItems}
+          </ul>
+        </div>
+        <div className="flex items-center justify-center">
+          <img
+            className=" lg:h-20 md:h-16 h-11  "
+            src="https://i.ibb.co/kHRLsmw/astro-home-1-removebg-preview-1.png"
+            alt=""
+          />
+          <h1 className="text-2xl font-bold lg:block hidden">Astrovel</h1>
+        </div>
+      </div>
+      <div className="navbar-center">
+        <div className=" md:block   hidden lg:flex">
+          <ul className="menu menu-horizontal   px-1">{listItems}</ul>
+        </div>
+      </div>
+
+      <div className="navbar-end space-x-3">
+        <div className="dropdown dropdown-hover drop-shadow-none">
+          <div tabIndex={0} role="button" className=" m-1">
+            <Link>
+              {user ? (
+                <img
+                  className="h-14 rounded-full"
+                  src={
+                    user?.photoURL
+                      ? user.photoURL
+                      : "https://i.ibb.co/fQZMVfT/profile-removebg-preview.png"
+                  }
+                  alt=""
+                />
+              ) : (
+                ""
+              )}
+            </Link>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>{user?.displayName}</a>
+            </li>
+            <li>
+              <a>
+                <button onClick={() => logOut()} className=" w-full">
+                  Logout
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {user ? (
+          ""
+        ) : (
+          <Link className="btn btn-success" to="/login">
+            {" "}
+            Login
+          </Link>
+        )}
+
+        <div>
+          {user ? (
+            ""
+          ) : (
+            <NavLink to="/register" className="btn btn-success">
+              Register
+            </NavLink>
+          )}
+        </div>
+
+        {/* dark mood button */}
+        <div className=" m-0 ">
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className=" p-1 mr-3 flex items-center text-4xl"
+          >
+            {darkMode ? <MdOutlineDarkMode /> : <MdDarkMode />}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NavBar;
