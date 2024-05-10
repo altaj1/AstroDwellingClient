@@ -1,13 +1,18 @@
 /* eslint-disable react/prop-types */
 
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const PopularServicesCard = ({ servics }) => {
-  const { area, description, price, provider, serviceName, postedTime, serviceImg } =
+  const { area, _id, description, price, provider, serviceName, postedTime, serviceImg } =
     servics;
   console.log(servics);
   return (
-    <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+    <div>
+        <Helmet>
+            <title>Popular services</title>
+        </Helmet>
+        <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
       <div className="flex space-x-4">
         <img
           alt=""
@@ -44,15 +49,18 @@ const PopularServicesCard = ({ servics }) => {
       </div>
       <div className="flex flex-wrap justify-between items-center">
         <div className="space-x-2">
+        <h1>Location: {area}</h1>
           <h1 className="font-bold">Price: {price}$</h1>
+          
         </div>
         <div className="flex space-x-2 text-sm dark:text-gray-600">
           
-          <Link to='/view-detail' type="button" className="flex items-center p-1 space-x-1.5 btn bg-blue-200">
+          <Link to={`/view-detail/${_id}`}type="button" className="flex items-center p-1 space-x-1.5 btn bg-blue-200">
           View Detail
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };

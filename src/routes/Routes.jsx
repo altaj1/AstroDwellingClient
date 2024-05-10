@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute'
 import Services from '../components/Services/Services'
 import AllServices from '../components/ShowAll/AllServices/AllServices'
 import ViewDetail from '../components/ViewDetail/ViewDetail'
+import axios from 'axios'
 
 const router = createBrowserRouter([
     {
@@ -55,8 +56,10 @@ const router = createBrowserRouter([
                 element:<AllServices></AllServices>
             },
             {
-                path:'/view-detail',
-                element:<ViewDetail></ViewDetail>
+                path:'/view-detail/:id',
+                element:<ViewDetail></ViewDetail>,
+                loader:({params})=>axios(`${import.meta.env.VITE_API_URL}/view-detail/${params.id}`)
+                
             }
         ]
     }

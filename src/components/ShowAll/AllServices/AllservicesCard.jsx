@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const AllservicesCard = ({services}) => {
-    const { area, description, price, provider, serviceName, postedTime, serviceImg } =
+    const { area, description, price, provider, serviceName, _id, postedTime, serviceImg } =
     services;
 //   console.log(services);
     return ( 
@@ -48,7 +48,7 @@ const AllservicesCard = ({services}) => {
 
             <div className="flex space-x-2 text-sm dark:text-gray-600 mb-20">
             
-            <Link to='/view-detail' type="button" className=" items-center p-1  space-x-1.5 btn bg-blue-200">
+            <Link to={`/view-detail/${_id}`} type="button" className=" items-center p-1  space-x-1.5 btn bg-blue-200">
             View Detail
             </Link>
           </div>
