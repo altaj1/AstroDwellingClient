@@ -10,6 +10,8 @@ import BookedServices from '../components/BookedServices/BookedServices'
 import ServiceToDo from '../components/ServiceToDo/ServiceToDo'
 import PrivateRoute from './PrivateRoute'
 import Services from '../components/Services/Services'
+import AllServices from '../components/ShowAll/AllServices/AllServices'
+import ViewDetail from '../components/ViewDetail/ViewDetail'
 
 const router = createBrowserRouter([
     {
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
             {
                 path:'/services',
                 element:<Services></Services>
+            },
+            {
+                path:'/show-all',
+                element:<AllServices></AllServices>
+            },
+            {
+                path:'/view-detail',
+                element:<ViewDetail></ViewDetail>
             }
         ]
     }

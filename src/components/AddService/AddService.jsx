@@ -27,6 +27,7 @@ const AddService = () => {
                              name: user?.displayName,
                              photo: user?.photoURL,
                            },
+                           postedTime: new Date()
         }
         
         console.log(servicesData)
