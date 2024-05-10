@@ -42,15 +42,15 @@ const Login = () => {
     
   };
 
-  const handelGithubLogin = () => {
-    setLoading(!isLoading);
+//   const handelGithubLogin = () => {
+//     setLoading(!isLoading);
 
-    gitHubLogin().then((res) => {
-      setLoading(isLoading);
-      notify();
-        navigate(location.state)
-    });
-  };
+//     gitHubLogin().then((res) => {
+//       setLoading(isLoading);
+//       notify();
+//         navigate(location.state)
+//     });
+//   };
 
   const handelLogin = (e) => {
     e.preventDefault();

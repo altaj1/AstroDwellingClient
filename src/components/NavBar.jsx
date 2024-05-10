@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 import { TbLayoutNavbarExpand } from "react-icons/tb";
+import { MdArrowDropDown } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
@@ -20,8 +21,19 @@ const NavBar = ({ setDarkMode, darkMode }) => {
         >
           Home
         </NavLink>
+        <NavLink
+          to="/services"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-400  font-bold lg:mt-0 mt-4"
+              : "font-bold mt-4 lg:mt-0"
+          }
+        >
+          Services
+        </NavLink>
 
-        <div className="dropdown w-full " >
+        {
+          user ?  <div className="dropdown w-full " >
           <NavLink to='#'
             tabIndex={0}
             role="button"
@@ -31,7 +43,9 @@ const NavBar = ({ setDarkMode, darkMode }) => {
                 : "font-bold mt-4 lg:mt-0"
             }
           >
-            Dashboard
+          <div className="flex items-center justify-center ">
+          <span>Dashboard </span> <MdArrowDropDown  className="text-xl"/>
+          </div>
           </NavLink>
           <ul tabIndex={0} className="dropdown-content z-[1] menu  w-48 space-y-5 ">
             <NavLink
@@ -76,6 +90,9 @@ const NavBar = ({ setDarkMode, darkMode }) => {
             </NavLink>
           </ul>
         </div>
+        : ""
+        }
+       
       
       </div>
     </div>
@@ -144,14 +161,14 @@ const NavBar = ({ setDarkMode, darkMode }) => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+            className="dropdown-content z-[1] menu p-2 shadoww w-52 bg-rose-300 rounded-lg"
           >
             <li>
               <a>{user?.displayName}</a>
             </li>
             <li>
               <a>
-                <button onClick={() => logOut()} className=" w-full">
+                <button onClick={() => logOut()} className=" w-full ">
                   Logout
                 </button>
               </a>
@@ -162,7 +179,7 @@ const NavBar = ({ setDarkMode, darkMode }) => {
         {user ? (
           ""
         ) : (
-          <Link className="btn btn-success" to="/login">
+          <Link className="btn bg-blue-300" to="/login">
             {" "}
             Login
           </Link>
@@ -172,7 +189,7 @@ const NavBar = ({ setDarkMode, darkMode }) => {
           {user ? (
             ""
           ) : (
-            <NavLink to="/register" className="btn btn-success">
+            <NavLink to="/register" className="btn bg-blue-300">
               Register
             </NavLink>
           )}

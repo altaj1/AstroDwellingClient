@@ -22,7 +22,7 @@ const AddService = () => {
         const area = form.area.value
         const description = form.description.value
         const servicesData = {serviceImg, serviceName, price, area, description,
-                           buyer: {
+                           provider: {
                              email:user.email,
                              name: user?.displayName,
                              photo: user?.photoURL,
