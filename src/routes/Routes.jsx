@@ -57,7 +57,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/view-detail/:id',
-                element:<ViewDetail></ViewDetail>,
+                element:<PrivateRoute><ViewDetail></ViewDetail></PrivateRoute>,
                 loader:({params})=>axios(`${import.meta.env.VITE_API_URL}/view-detail/${params.id}`)
                 
             }
