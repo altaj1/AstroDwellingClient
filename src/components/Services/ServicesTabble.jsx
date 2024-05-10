@@ -48,8 +48,8 @@ const ServicesTabble = ({services, idx}) => {
               <td>{price}$</td>
               <td>{area}</td>
               <td> {new Date(postedTime).toLocaleDateString()}</td>
-              <td><Link to={`/update/${_id}`} className="btn"><GrUpdate /></Link></td>
-              <td><button onClick={()=>handeleDelete(_id)}  className="btn bg-red-300"><MdDeleteForever /></button></td>
+              <td><Link to={`/update/${_id}`} className="btn bg-blue-200 text-xl"><GrUpdate /></Link></td>
+              <td><button onClick={()=>handeleDelete(_id)}  className="btn text-2xl bg-red-300"><MdDeleteForever /></button></td>
               
             </tr>
     );

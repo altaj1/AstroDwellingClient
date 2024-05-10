@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import ServicesTabble from "./ServicesTabble";
+import { Helmet } from "react-helmet";
+import { Typewriter } from "react-simple-typewriter";
 
 const Services = () => {
     const [servicess, setServicess] = useState([])
@@ -18,18 +20,23 @@ const Services = () => {
     console.log(servicess)
     return (
         <div className="text-center p-14"> 
-     {/* <h1 className="text-4xl font-bold opacity-85">
+        <Helmet>
+            <title>
+                Services
+            </title>
+        </Helmet>
+     <h1 className="text-4xl font-bold opacity-85 ">
             <Typewriter
                   delaySpeed={500}
                   deleteSpeed={10}
                   loop={1}
                   typeSpeed={200}
-                  words={["  Update Tourists Spot...!"]}
+                  words={["  Your Added Services...!"]}
                 />
-             </h1> */}
+             </h1>
      <div className="overflow-x-auto pb-14">
-      <table className="table">
-        <thead>
+      <table className="table ">
+        <thead className="text-blue-300">
           <tr>
             <th></th>
             <th>Services Name</th>
