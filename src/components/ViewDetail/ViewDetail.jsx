@@ -148,7 +148,7 @@ const ViewDetail = () => {
                             deleteSpeed={10}
                             loop={1}
                             typeSpeed={200}
-                            words={[" Add a Home Services...!"]}
+                            words={[" Booking a Home Services...!"]}
                           />
                         </h1>
                       </div>

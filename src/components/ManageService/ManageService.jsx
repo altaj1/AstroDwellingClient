@@ -14,7 +14,7 @@ const ManageService = () => {
     const axiosSecure = useAxiosSecure();
     // console.log(axiosSecure)
     useEffect(()=>{
-        axiosSecure.get(`${import.meta.env.VITE_API_URL}/bookings?email=${user?.email}`)
+        axiosSecure.get(`${import.meta.env.VITE_API_URL}/manag-services?email=${user?.email}`)
         .then(res=>{
             setServicess(res.data)
             // console.log(res)
