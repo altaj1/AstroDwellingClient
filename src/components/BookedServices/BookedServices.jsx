@@ -35,36 +35,39 @@ const BookedServices = () => {
                   deleteSpeed={10}
                   loop={1}
                   typeSpeed={200}
-                  words={["  Your Booked Services...!"]}
+                  words={["  Your Booking Services...!"]}
                 />
              </h1>
-     <div className="overflow-x-auto pb-14">
-      <table className="table ">
-        <thead className="text-blue-300">
-          <tr>
-            <th></th>
-            <th>Services Name</th>
-            <th>Services Id</th>
-            <th>Price</th>
-            <th>Location</th>
-            <th>Posted Date</th>
-            {/* <th>Update</th>
-            <th>Delete</th> */}
+             {
+                servicess.length > 0 ? <div className="overflow-x-auto pb-14">
+                <table className="table ">
+                  <thead className="text-blue-300">
+                    <tr>
+                      <th></th>
+                      <th>Services Name</th>
+                      <th>Services Id</th>
+                      <th>Price</th>
+                      <th>Location</th>
+                      <th>Posted Date</th>
+                      
+          
+          
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {servicess.map((services, idx ) =>  <BookedServicesCard key={idx} idx={idx} services={services}></BookedServicesCard>
+                   
+                  )}
+                 
+                  </tbody>
+                 
+                </table>
+              </div> : <h1 className="text-4xl mt-24">Plase Add  Services</h1>
+             }
 
 
-          </tr>
-        </thead>
-        <tbody>
-        {servicess.map((services, idx ) =>  <BookedServicesCard key={idx} idx={idx} services={services}></BookedServicesCard>
-         
-        )}
-        {/* {
-            servicess.map((services, idx)=><BookedServicesCard reload={reload} setReload={setReload} key={idx} idx={idx} services={services}></BookedServicesCard>)
-        } */}
-        </tbody>
-       
-      </table>
-    </div>
+             
+     
     
    </div>
     );

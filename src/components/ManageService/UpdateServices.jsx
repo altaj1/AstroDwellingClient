@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { Typewriter } from 'react-simple-typewriter';
+import { Helmet } from 'react-helmet';
 
 const UpdateServices = () => {
 const updataID = useLoaderData()
@@ -49,6 +50,11 @@ const updataID = useLoaderData()
     }
     return (
         <div>
+          <Helmet>
+            <title>
+              Update Services
+            </title>
+          </Helmet>
         <div className="text-center pt-20">
           <h1 className="text-4xl font-bold opacity-85">
           <Typewriter

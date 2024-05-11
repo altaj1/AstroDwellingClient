@@ -5,13 +5,14 @@ import NavBar from '../components/NavBar'
 import Footer from '../components/Footer/Footer'
 import { ToastContainer } from 'react-toastify'
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 
 const Main = () => {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <div>
-      <h1>this is home</h1>
+      <Helmet><title>Home</title></Helmet>
       {/* Navbar */}
       <NavBar darkMode={darkMode} setDarkMode={setDarkMode}/>
       {/* Outlet */}

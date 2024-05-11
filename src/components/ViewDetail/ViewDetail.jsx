@@ -29,24 +29,24 @@ const ViewDetail = () => {
     e.preventDefault();
 
     const form = e.target;
-    const serviceImg = form.serviceImg.value;
-    console.log(serviceImg," this is img");
-    const serviceName = form.ServiceName.value;
-    const price = form.Price.value;
+    // const serviceImg = form.serviceImg.value;
+    // console.log(serviceImg," this is img");
+    // const serviceName = form.ServiceName.value;
+    // const price = form.Price.value;
     const area = form.area.value;
     const takingdate = startDate;
     const instruction = form.instruction.value;
     const servicesData = {
-      serviceImg,
-      serviceName,
-      price,
+      // serviceImg,
+      // serviceName,
+      // price,
       area,
       description,
-      provider: {
-        email: user.email,
-        name: user?.displayName,
-        photo: user?.photoURL,
-      },
+      // provider: {
+      //   email: user.email,
+      //   name: user?.displayName,
+      //   photo: user?.photoURL,
+      // },
       takingdate,
       bookingDate: new Date(),
       buyer: {
@@ -165,7 +165,7 @@ const ViewDetail = () => {
                                   defaultValue={_id}
                                   disabled
                                   readOnly
-                                  name="ServiceImg"
+                                  name=""
                                   type="text"
                                   placeholder="  Service Image URL"
                                   className="w-full rounded-md text-black   focus:outline-none"
@@ -181,7 +181,7 @@ const ViewDetail = () => {
                                   defaultValue={serviceName}
                                   disabled
                                   readOnly
-                                  name="ServiceName"
+                                  name=""
                                   id="lastname"
                                   type="text"
                                   placeholder="    Service Name"
@@ -197,7 +197,7 @@ const ViewDetail = () => {
                                   disabled
                                   defaultValue={serviceImg}
                                   readOnly
-                                  name="serviceImg"
+                                  name=""
                                   type="text"
                                   placeholder="  Service Image URL"
                                   className="w-full rounded-md text-black   focus:outline-none"
@@ -211,7 +211,7 @@ const ViewDetail = () => {
                                   disabled
                                   defaultValue={provider.email}
                                   readOnly
-                                  name="ServiceImg"
+                                  name=""
                                   type="text"
                                   placeholder="  Service Image URL"
                                   className="w-full rounded-md text-black   focus:outline-none"
@@ -250,7 +250,7 @@ const ViewDetail = () => {
                                 defaultValue={price}
                                 disabled
                                 readOnly
-                                  name="Price"
+                                  name=""
                                   type="number"
                                   placeholder="      Price..."
                                   className="w-full rounded-md text-black  focus:outline-none"

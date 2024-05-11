@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const AddService = () => {
     const {user} = useAuth();
@@ -48,6 +49,7 @@ const AddService = () => {
 
     return (
         <div>
+          <Helmet><title>Add Service</title></Helmet>
         <div className="text-center pt-20">
           <h1 className="text-4xl font-bold opacity-85">
           <Typewriter
