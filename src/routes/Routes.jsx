@@ -13,6 +13,7 @@ import Services from '../components/Services/Services'
 import AllServices from '../components/ShowAll/AllServices/AllServices'
 import ViewDetail from '../components/ViewDetail/ViewDetail'
 import axios from 'axios'
+import UpdateServices from '../components/ManageService/UpdateServices'
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/manageservice',
-                element:<ManageService></ManageService>
+                element:<PrivateRoute><ManageService></ManageService></PrivateRoute>
             },
             {
                 path:'booked-services',
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/services',
-                element:<PrivateRoute><Services></Services></PrivateRoute>
+                element:<Services></Services>
             },
             {
                 path:'/show-all',
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
                 element:<PrivateRoute><ViewDetail></ViewDetail></PrivateRoute>,
                 loader:({params})=>axios(`${import.meta.env.VITE_API_URL}/view-detail/${params.id}`)
                 
+            },
+            {
+                path:'/updat-services/:id',
+                element:<UpdateServices></UpdateServices>,
+                loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/view-detail/${params.id}`)
             }
         ]
     }

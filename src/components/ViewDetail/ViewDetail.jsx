@@ -12,7 +12,7 @@ const ViewDetail = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { data } = useLoaderData();
   const { user, setUser } = useAuth();
-  console.log(data);
+  // console.log(data);
   const notify = () => toast("Congratulations Booking Successfully!!");
   const {
     area,
@@ -29,7 +29,8 @@ const ViewDetail = () => {
     e.preventDefault();
 
     const form = e.target;
-    const serviceImg = form.ServiceImg.value;
+    const serviceImg = form.serviceImg.value;
+    console.log(serviceImg," this is img");
     const serviceName = form.ServiceName.value;
     const price = form.Price.value;
     const area = form.area.value;
@@ -47,7 +48,7 @@ const ViewDetail = () => {
         photo: user?.photoURL,
       },
       takingdate,
-      postedTime: new Date(),
+      bookingDate: new Date(),
       buyer: {
         userEmail: user?.email,
         name: user?.displayName,
@@ -57,7 +58,7 @@ const ViewDetail = () => {
       status: "pending",
     };
 
-    console.log(servicesData);
+    
 
     try {
       const { data } = await axios.put(
@@ -72,7 +73,7 @@ const ViewDetail = () => {
 
       // navigate('/my-posted-jobs')
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -196,7 +197,7 @@ const ViewDetail = () => {
                                   disabled
                                   defaultValue={serviceImg}
                                   readOnly
-                                  name="ServiceImg"
+                                  name="serviceImg"
                                   type="text"
                                   placeholder="  Service Image URL"
                                   className="w-full rounded-md text-black   focus:outline-none"

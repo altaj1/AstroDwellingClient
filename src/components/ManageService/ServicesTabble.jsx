@@ -1,11 +1,20 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { GrUpdate } from "react-icons/gr";
 import { MdDeleteForever } from "react-icons/md";
+import Swal from "sweetalert2";
 
-const ServicesTabble = ({services, idx}) => {
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+
+
+const ServicesTabble = ({services, idx, servicess, setServicess, reload, setReload}) => {
+    
+
     const { area, _id, description, price, provider, serviceName, postedTime, serviceImg } =
     services;
-
+    const {user} = useAuth()
+    // const [remServices, setRemServices] =useState([])
     const handeleDelete = (_id)=>{
         Swal.fire({
             title: 'Are you sure?',
@@ -21,20 +30,19 @@ const ServicesTabble = ({services, idx}) => {
             {
                 console.log(result)
                 console.log(_id)
-                fetch(`https://astrovel-server.vercel.app/delete/${_id}`,{
-                    method:'DELETE'
-                })
-                .then(res =>res.json())
+                axios.delete(`${import.meta.env.VITE_API_URL}/services-delete/${_id}`)
                 .then(data =>{
-                    console.log(data)
-                    if (data.deletedCount > 0) {
+                    console.log(data, "jalsdjflkj")
+                    if (data.data.deletedCount > 0) {
                         Swal.fire(
                             'Deleted!',
-                            'Your Tourist Spot Has Been Deleted.',
+                            'Your Services Has Been Deleted.',
                             'success'
                         )
-                        const remaining = spots.filter(spot => spot._id !== _id);
-                        setSpots(remaining);
+                        const remaining = [...servicess].filter(s => s._id !== _id);
+                        console.log(remaining)
+                        setServicess(remaining);
+                        
                     }
                 })
             }
@@ -48,7 +56,8 @@ const ServicesTabble = ({services, idx}) => {
               <td>{price}$</td>
               <td>{area}</td>
               <td> {new Date(postedTime).toLocaleDateString()}</td>
-              <td><Link to={`/update/${_id}`} className="btn bg-blue-200 text-xl"><GrUpdate /></Link></td>
+              <td><Link to={`/updat-services/${_id}`} className="btn bg-blue-200 text-xl"><GrUpdate /></Link></td>
+             
               <td><button onClick={()=>handeleDelete(_id)}  className="btn text-2xl bg-red-300"><MdDeleteForever /></button></td>
               
             </tr>
