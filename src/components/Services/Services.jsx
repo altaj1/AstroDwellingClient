@@ -4,7 +4,7 @@ import AllServices from "../ShowAll/AllServices/AllServices";
 const Services = () => {
   
     return (
-        <div className="text-center p-14"> 
+        <div className="text-center p-5 pt-24"> 
         <Helmet>
             <title>
                 Services

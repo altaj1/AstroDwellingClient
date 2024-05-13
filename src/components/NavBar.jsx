@@ -104,7 +104,7 @@ const NavBar = ({ setDarkMode, darkMode }) => {
     }
   }, [user]);
   return (
-    <div className="navbar shadow-md top-0  z-50  bg-base-100 lg:pl-72 lg:pr-72  fixed">
+    <div className={`navbar shadow-md top-0  z-50 lg:pl-72 lg:pr-72  fixed ${darkMode ? "bg-[#061f31] text-rose-200 " : "bg-slate-100"} dark:bg-[#0F172A] `}>
       <div className="navbar-start lg:pl-14">
         <div className="dropdown">
           <div
@@ -127,11 +127,11 @@ const NavBar = ({ setDarkMode, darkMode }) => {
         </div>
         <div className="flex items-center justify-center">
           <img
-            className=" lg:h-20 md:h-16 h-11  "
+            className=" lg:h-16 md:h-16 h-11  "
             src="https://i.ibb.co/kHRLsmw/astro-home-1-removebg-preview-1.png"
             alt=""
           />
-          <h1 className="text-2xl font-bold lg:block hidden">Astrovel</h1>
+          <h1 className="text-2xl font-bold lg:block hidden">Dwelling</h1>
         </div>
       </div>
       <div className="navbar-center">

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const ViewDetail = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { data } = useLoaderData();
   const { user, setUser } = useAuth();
+  const  navigate = useNavigate()
   // console.log(data);
   const notify = () => toast("Congratulations Booking Successfully!!");
   const {
@@ -29,24 +30,15 @@ const ViewDetail = () => {
     e.preventDefault();
 
     const form = e.target;
-    // const serviceImg = form.serviceImg.value;
-    // console.log(serviceImg," this is img");
-    // const serviceName = form.ServiceName.value;
-    // const price = form.Price.value;
+    
     const area = form.area.value;
     const takingdate = startDate;
     const instruction = form.instruction.value;
     const servicesData = {
-      // serviceImg,
-      // serviceName,
-      // price,
+      
       area,
       description,
-      // provider: {
-      //   email: user.email,
-      //   name: user?.displayName,
-      //   photo: user?.photoURL,
-      // },
+      
       takingdate,
       bookingDate: new Date(),
       buyer: {
@@ -71,7 +63,7 @@ const ViewDetail = () => {
         form.reset();
       }
 
-      // navigate('/my-posted-jobs')
+      navigate('/booked-services')
     } catch (err) {
       // console.log(err);
     }
@@ -83,12 +75,17 @@ const ViewDetail = () => {
     }
   }, [user]);
   return (
-    <div>
+    <div className="pt-24  space-y-7">
+
       <Helmet>
         <title>View Detail</title>
       </Helmet>
-      <div className="flex flex-col  p-6 space-y-6 md:mb-40 lg:mb-0 sm:mb-20 rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
-        <div className="flex space-x-4">
+      <div className="text-center">
+        <h1 className="text-3xl font-semibold">View Details</h1>
+        <p>Offers a concise two-line description highlighting the main benefits or unique selling points of the service. This description aims to capture <br /> the attention of users quickly and encourage them to explore further</p>
+      </div>
+      <div className="flex flex-col  p-6 space-y-6 md:mb-40 lg:mb-0 sm:mb-20 lg:px-96 rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+        <div className="flex space-x-4 w-3/4">
           <img
             alt=""
             src={provider.photo}
@@ -108,13 +105,14 @@ const ViewDetail = () => {
             </span>
           </div>
         </div>
-        <div className="lg:flex justify-between gap-10  space-y-5">
+        <div className="lg:flex justify-between gap-10 space-y-5">
           <img
             src={serviceImg}
             alt=""
-            className=" w-full  mb-4 h-60 rounded-md sm:h-96 dark:bg-gray-500"
+            className="   mb-4 h-60 rounded-md sm:h-96 dark:bg-gray-500"
           />
-          <div className="">
+          <div  className="text-start  lg:w-[30%]  flex flex-col lg:items-center md:p-10 p-8 justify-center">
+          <div className=" space-y-5">
             <h2 className="mb-1 text-xl font-semibold">{serviceName}</h2>
             <p className="text-sm dark:text-gray-600">{description}</p>
 
@@ -132,7 +130,17 @@ const ViewDetail = () => {
                 >
                   Book Now
                 </button>
-                <dialog id="my_modal_3" className="modal">
+                
+              </div>
+            </div>
+          </div>
+
+          {/* end */}
+          </div>
+          {/* end */}
+          
+
+          <dialog id="my_modal_3" className="modal">
                   <div className="modal-box">
                     <form method="dialog">
                       {/* if there is a button in form, it will close the modal */}
@@ -341,9 +349,7 @@ const ViewDetail = () => {
                     </div>
                   </div>
                 </dialog>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

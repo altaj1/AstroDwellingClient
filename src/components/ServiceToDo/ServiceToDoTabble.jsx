@@ -1,11 +1,26 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
-const ServiceToDoTabble = ({services, idx}) => {
-    const [filter, setFilter] = useState('')
+
+const ServiceToDoTabble = ({services, idx, servicesStatus, setServicesStatus, servicesID, setServicesID}) => {
+   const axiosSecure = useAxiosSecure()
+   console.log(servicesStatus)
     const { area, _id, status, description, price, provider, serviceName, postedTime, serviceImg } =
     services;
-    console.log(filter)
+    console.log(servicesStatus, servicesID)
+    useEffect(()=>{
+    if(servicesStatus && servicesID){
+      axios.patch(`${import.meta.env.VITE_API_URL}/updateStatus?servicesID=${servicesID}&servicesStatus=${servicesStatus}`, )
+      .then(res=>{
+        console.log(res)
+      })
+    }
+    },[servicesStatus, servicesID])
+   
     return (
         <tr>
               <th>{idx +1}</th>
@@ -17,18 +32,18 @@ const ServiceToDoTabble = ({services, idx}) => {
               <td>
               <select
               onChange={e => {
-                setFilter(e.target.value)
-                
+                setServicesStatus(e.target.value)
+                setServicesID(_id)
               }}
-              value={filter}
+              value={servicesStatus}
               name='category'
               id='category'
               className='border p-4 rounded-lg text-black'
             >
-              <option value=''>{status}</option>
-              <option value='Web Development'>Web Development</option>
-              <option value='Graphics Design'>Graphics Design</option>
-              <option value='Digital Marketing'>Digital Marketing</option>
+              <option value='pending'>{status}</option>
+              <option value='working'>working</option>
+              <option value='completed'>completed</option>
+              
             </select>
               </td>
 

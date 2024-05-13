@@ -8,16 +8,37 @@ import ServiceToDoTabble from './ServiceToDoTabble';
 
 const ServiceToDo = () => {
     const [servicess, setServicess] = useState([])
+    const [servicesStatus, setServicesStatus] = useState('completed');
+    const [servicesID, setServicesID] = useState("")
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth();
     console.log(user.email)
     useEffect(()=>{
-        axiosSecure(`${import.meta.env.VITE_API_URL}/services-to-do/${user.email}`)
+
+
+      // &servicesStatus=${servicesStatus}
+      
+        axiosSecure(`${import.meta.env.VITE_API_URL}/services-to-do?email=${user.email}&servicesStatus=${servicesStatus}`)
         .then(res=>{
             setServicess(res.data)
-            console.log(res.data)
+            // console.log(res.data)
         })
+   
+      
     },[])
+    // useEffect(()=>{
+    //   fetch(`http://localhost:9000/updateStatus?servicesID=${servicesID}`,{
+    //     method: 'PATCH',
+    //     headers:{
+    //       'content-type': 'application/json'
+    //     },
+    //     body:servicesStatus
+    //   })
+    //   .then(res => res.json())
+    //   .then(data=>{
+    //     console.log(data)
+    //   })
+    // },[])
     return (
         <div className="text-center p-14"> 
         <Helmet>
@@ -51,7 +72,17 @@ const ServiceToDo = () => {
                     </tr>
                   </thead>
                   <tbody>
-                  {servicess.map((services, idx ) =>  <ServiceToDoTabble  key={idx} idx={idx} services={services}></ServiceToDoTabble>
+                  {servicess.map((services, idx ) =>  <ServiceToDoTabble
+                   setServicess={setServicess} 
+                  servicesStatus ={servicesStatus}  
+                  setServicesStatus={setServicesStatus}
+                  setServicesID={setServicesID}
+                  servicesID={servicesID}
+                  
+                  key={idx} idx={idx} 
+                  services={services}
+
+                  ></ServiceToDoTabble>
                   
                 //    key={idx} idx={idx} services={services}
                   )}

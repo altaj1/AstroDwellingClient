@@ -15,7 +15,7 @@ const PopularServices = () => {
         })
     },[])
     return (
-        <div className="lg:px-72 md:px-10 space-y-5">
+        <div className="lg:px-72 md:px-10 space-y-8">
             <div className='text-center space-y-5'>
                 <h1 className="text-4xl font-bold">Our Popular Services</h1>
                 <p className="text-sm"> Discover our sought-after solutions tailored to elevate your home living experience. From meticulous cleaning to expert renovations, we're your go-to for top-quality care and craftsmanship.</p>

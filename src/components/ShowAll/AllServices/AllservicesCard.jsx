@@ -7,7 +7,7 @@ const AllservicesCard = ({services}) => {
 //   console.log(services);
     return ( 
         <div className="flex flex-col  p-6 space-y-6 md:mb-40 lg:mb-0 sm:mb-20 rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 ">
           <img
             alt=""
             src={provider.photo}
@@ -27,12 +27,18 @@ const AllservicesCard = ({services}) => {
           </div>
         </div>
         <div className="lg:flex justify-between gap-10  space-y-5">
-          <img
+        <div className="">
+        <img
             src={serviceImg}
             alt=""
-            className=" w-full  mb-4 h-60 rounded-md sm:h-96 dark:bg-gray-500"
+            className="   mb-4 h-60 rounded-md sm:h-96 dark:bg-gray-500"
           />
-          <div className="">
+
+        </div>
+
+         <div  className="text-start  lg:w-[30%] flex flex-col lg:items-center md:p-10 p-8 justify-center">
+
+         <div className="text-start space-y-5">
           <h2 className="mb-1 text-xl font-semibold">
             {serviceName}
           </h2>
@@ -53,6 +59,7 @@ const AllservicesCard = ({services}) => {
             </Link>
           </div>
           </div>
+         </div>
         </div>
        
       </div>

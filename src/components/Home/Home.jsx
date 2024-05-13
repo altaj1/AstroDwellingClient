@@ -7,11 +7,11 @@ import PopularServices from "./PopularServices/PopularServices";
 
 const Home = () => {
     return (
-        <div>
+        <div className="mt-0 space-y-7">
             <Helmet><title>Home</title></Helmet>
-            this is home
+            
             <Carousel></Carousel>
-            <div>
+            <div className="lg:ml-14">
                 <PopularServices></PopularServices>
             </div>
             <div>

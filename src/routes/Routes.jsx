@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             {
                 path:'booked-services',
                 element:<PrivateRoute><BookedServices></BookedServices></PrivateRoute>,
-                // loader: ()=>fetch(`${import.meta.env.VITE_API_URL}/bookings`)
+                
             },
             {
                 path:'/service-to-do',

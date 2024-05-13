@@ -17,14 +17,14 @@ const Main = () => {
       <NavBar darkMode={darkMode} setDarkMode={setDarkMode}/>
       {/* Outlet */}
       <div className={`${darkMode ? "bg-[#061f31]  h-full text-white" : ""} dark:bg-[#0F172A] `}>
-      <div className='min-h-[calc(100vh-306px)] mt-10 lg:mt-24'>
-        this is main
+      <div className='min-h-[calc(100vh-250px)] mt-300 lg:mt-14'>
+      
         <Outlet />
         <ToastContainer />
       </div>
       </div>
       {/* Footer */}
-      {/* <Footer /> */}
+      
       <Footer></Footer>
       
     </div>
