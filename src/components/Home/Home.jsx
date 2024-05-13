@@ -10,7 +10,9 @@ const Home = () => {
         <div className="mt-0 space-y-7">
             <Helmet><title>Home</title></Helmet>
             
+            <div className="bg-blue-400">
             <Carousel></Carousel>
+            </div>
             <div className="lg:ml-14">
                 <PopularServices></PopularServices>
             </div>

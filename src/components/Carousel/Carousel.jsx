@@ -15,7 +15,7 @@ import Slide from './Slide'
 
 export default function Carousel() {
   return (
-    <div className='container mt-0 px-6 py-10 mx-auto'>
+    <div className='container mt-0 min-w-full bg-slate-400 mx-auto'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -31,7 +31,7 @@ export default function Carousel() {
         modules={[Autoplay, Pagination, Navigation]}
         className='mySwiper'
       >
-        <SwiperSlide>
+        <SwiperSlide className="bg-[url('https://i.ibb.co/FVNgqh2/Angkor-Wat.jpg')]  bg-no-repeat bg-cover  min-w-full">
           <Slide
             // image={bgimg1}
             text='Get Your Web Development Projects Done in minutes'
