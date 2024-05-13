@@ -40,6 +40,7 @@ const AddService = () => {
             )
             console.log(data)
             notify()
+            form.reset()
             // navigate('/my-posted-jobs')
           } catch (err) {
             console.log(err)
