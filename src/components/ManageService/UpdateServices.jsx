@@ -13,7 +13,7 @@ const updataID = useLoaderData()
     const {user} = useAuth();
     // const  navigate = useNavigate()
     // console.log(user)
-    const notify = () => toast("Congratulations Added Successfully!!");
+    const notify = () => toast("Congratulations Update Services Successfully!!");
     
 
     const handelSubmitt =async (e, )=>{

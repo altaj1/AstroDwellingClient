@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
@@ -8,7 +8,7 @@ import ServiceToDoTabble from './ServiceToDoTabble';
 
 const ServiceToDo = () => {
     const [servicess, setServicess] = useState([])
-    const [servicesStatus, setServicesStatus] = useState('completed');
+    const [servicesStatus, setServicesStatus] = useState('');
     const [servicesID, setServicesID] = useState("")
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth();
@@ -18,27 +18,16 @@ const ServiceToDo = () => {
 
       // &servicesStatus=${servicesStatus}
       
-        axiosSecure(`${import.meta.env.VITE_API_URL}/services-to-do?email=${user.email}&servicesStatus=${servicesStatus}`)
+        axiosSecure(`${import.meta.env.VITE_API_URL}/services-to-do?email=${user.email}`)
         .then(res=>{
             setServicess(res.data)
             // console.log(res.data)
         })
    
       
-    },[])
-    // useEffect(()=>{
-    //   fetch(`http://localhost:9000/updateStatus?servicesID=${servicesID}`,{
-    //     method: 'PATCH',
-    //     headers:{
-    //       'content-type': 'application/json'
-    //     },
-    //     body:servicesStatus
-    //   })
-    //   .then(res => res.json())
-    //   .then(data=>{
-    //     console.log(data)
-    //   })
-    // },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[servicesStatus, servicesID])
+  
     return (
         <div className="text-center p-14"> 
         <Helmet>

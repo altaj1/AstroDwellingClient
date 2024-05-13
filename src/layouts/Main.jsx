@@ -17,7 +17,7 @@ const Main = () => {
       <NavBar darkMode={darkMode} setDarkMode={setDarkMode}/>
       {/* Outlet */}
       <div className={`${darkMode ? "bg-[#061f31]  h-full text-white" : ""} dark:bg-[#0F172A] `}>
-      <div className='min-h-[calc(100vh-250px)] mt-300 lg:mt-14'>
+      <div className='min-h-[calc(100vh-300px)]  lg:mt-11'>
       
         <Outlet />
         <ToastContainer />
@@ -25,7 +25,7 @@ const Main = () => {
       </div>
       {/* Footer */}
       
-      <Footer></Footer>
+      <Footer darkMode={darkMode}></Footer>
       
     </div>
   )

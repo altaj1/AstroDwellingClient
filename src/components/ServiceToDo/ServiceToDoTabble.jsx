@@ -16,7 +16,7 @@ const ServiceToDoTabble = ({services, idx, servicesStatus, setServicesStatus, se
     if(servicesStatus && servicesID){
       axios.patch(`${import.meta.env.VITE_API_URL}/updateStatus?servicesID=${servicesID}&servicesStatus=${servicesStatus}`, )
       .then(res=>{
-        console.log(res)
+        console.log(res, "status update")
       })
     }
     },[servicesStatus, servicesID])
@@ -40,17 +40,13 @@ const ServiceToDoTabble = ({services, idx, servicesStatus, setServicesStatus, se
               id='category'
               className='border p-4 rounded-lg text-black'
             >
-              <option value='pending'>{status}</option>
+              <option className="text-rose-300 disabled read-only:" >{status}</option>
+              <option value='pending'>pending</option>
               <option value='working'>working</option>
               <option value='completed'>completed</option>
               
             </select>
               </td>
-
-              {/* <td><Link to={`/updat-services/${_id}`} className="btn bg-blue-200 text-xl"><GrUpdate /></Link></td> */}
-             
-              {/* <td><button onClick={()=>handeleDelete(_id)}  className="btn text-2xl bg-red-300"><MdDeleteForever /></button></td> */}
-              
             </tr>
     );
 };

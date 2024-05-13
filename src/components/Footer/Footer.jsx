@@ -1,62 +1,80 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 
-const Footer = () => {
+const Footer = ({darkMode}) => {
+  const {user} = useAuth()
     return (
-        <footer className='bg-white shadow-sm'>
+        <footer className={`shadow-sm  ${darkMode ? "bg-[#061f31] text-rose-200 " : "bg-slate-100"} pt-8`}>
         <hr />
         <div className='container px-6 py-8 mx-auto'>
           <div className='flex flex-col items-center text-center'>
             <div className='flex gap-2 items-center'>
-              {/* <img className='w-auto h-7' src={logo} alt='' /> */}
-              <span>SoloSphere</span>
+              <img className='w-auto h-14' src='https://i.ibb.co/kHRLsmw/astro-home-1-removebg-preview-1.png' alt='' />
+              <span className="text-3xl font-semibold">Astro Dwelling</span>
             </div>
   
             <div className='flex flex-wrap justify-center mt-6 -mx-4'>
-              <a
-                href='#'
+              <Link
+                to='/'
+                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                aria-label='Reddit'
+              >
+                
+                Home
+              </Link>
+              <Link
+                to='/services'
+                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                aria-label='Reddit'
+              >
+                
+                Services
+              </Link>
+              
+              {
+                user?<Link
+                to='/addservice'
                 className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
                 aria-label='Reddit'
               >
                 {' '}
-                Home{' '}
-              </a>
+                Add Services
+              </Link>: ""
+              }
+              {
+                user?<Link
+                to='/manageservice'
+                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                aria-label='Reddit'
+              >
+                
+                Manage Services
+              </Link>: ""
+              }
+              {
+                user?<Link
+                to='/booked-services'
+                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                aria-label='Reddit'
+              >
+                
+               Booked Services 
+              </Link>: ""
+              }
+              {
+                user?<Link
+                to='/service-to-do'
+                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
+                aria-label='Reddit'
+              >
+                
+               Service To Do
+              </Link>: ""
+              }
   
-              <a
-                href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
-                aria-label='Reddit'
-              >
-                {' '}
-                About{' '}
-              </a>
+              
   
-              <a
-                href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
-                aria-label='Reddit'
-              >
-                {' '}
-                Teams{' '}
-              </a>
-  
-              <a
-                href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
-                aria-label='Reddit'
-              >
-                {' '}
-                Privacy{' '}
-              </a>
-  
-              <a
-                href='#'
-                className='mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 '
-                aria-label='Reddit'
-              >
-                {' '}
-                Cookies{' '}
-              </a>
             </div>
           </div>
   

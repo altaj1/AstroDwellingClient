@@ -48,6 +48,7 @@ const ViewDetail = () => {
       },
       instruction,
       status: "pending",
+      booked:'true'
     };
 
     
