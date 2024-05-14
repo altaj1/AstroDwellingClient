@@ -40,7 +40,7 @@ const ServiceToDoTabble = ({services, idx, servicesStatus, setServicesStatus, se
               id='category'
               className='border p-4 rounded-lg text-black'
             >
-              <option className="text-rose-300 disabled read-only:" >{status}</option>
+              <option className="text-rose-300 " >{status}</option>
               <option value='pending'>pending</option>
               <option value='working'>working</option>
               <option value='completed'>completed</option>

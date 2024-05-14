@@ -79,7 +79,7 @@ const ServiceToDo = () => {
                   </tbody>
                  
                 </table>
-              </div> : <h1 className="text-4xl mt-24">Plase Add  Services</h1>
+              </div> : <h1 className="text-4xl mt-24"> No One Bougth Your Services</h1>
              }
     
    </div>
