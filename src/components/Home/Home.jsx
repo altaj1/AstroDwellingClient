@@ -17,6 +17,10 @@ const Home = () => {
             <div className="lg:ml-14">
                 <PopularServices></PopularServices>
             </div>
+            <div className="text-center pt-10">
+                    <h1 className="text-3xl font-">Frequently Asked Questions</h1>
+                    <p className=" b-8">Find answers to common questions about our services.</p>
+                </div>
             <div className="lg:grid grid-cols-2 md:grid lg:justify-around md:justify-around gap-5 ">
                 <div className=" flex items-center justify-end pt-5 " ><img className="h-96 items-end" src="https://i.ibb.co/km4PqSb/faq-edumantra-net.jpg" alt="" /></div>
                 <div className=" flex  justify-start" >
