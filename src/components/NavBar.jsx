@@ -126,12 +126,12 @@ const NavBar = ({ setDarkMode, darkMode }) => {
           </ul>
         </div>
         <div className="flex items-center justify-center">
-          <img
-            className=" lg:h-16 md:h-16 h-11  "
-            src="https://i.ibb.co/kHRLsmw/astro-home-1-removebg-preview-1.png"
+          <Link to='/'><img
+            className=" lg:h-16 md:h-16 h-11 pt-2 "
+            src="https://i.ibb.co/Hxp9yrf/download-removebg-preview-2.png"
             alt=""
-          />
-          <h1 className="text-2xl font-bold lg:block hidden">Dwelling</h1>
+          /></Link>
+          <h1 className="text-2xl font-bold lg:block hidden inline-block  text-transparent bg-clip-text bg-gradient-to-r from-indigo-900 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">Dwelling</h1>
         </div>
       </div>
       <div className="navbar-center">
@@ -161,7 +161,8 @@ const NavBar = ({ setDarkMode, darkMode }) => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadoww w-52 bg-rose-300 rounded-lg"
+            className="dropdown-content z-[1] menu p-2 shadoww w-52 bg-rose-300 text-black opacity-85 font-semibold rounded-lg"
+             
           >
             <li>
               <a>{user?.displayName}</a>

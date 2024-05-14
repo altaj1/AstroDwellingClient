@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 
 
@@ -11,11 +12,15 @@ const ServiceToDoTabble = ({services, idx, servicesStatus, setServicesStatus, se
    console.log(servicesStatus)
     const { area, _id, status, description, price, provider, serviceName, postedTime, serviceImg } =
     services;
+    const notifi =()=> toast("Status Update Successfully ")
     console.log(servicesStatus, servicesID)
     useEffect(()=>{
     if(servicesStatus && servicesID){
       axios.patch(`${import.meta.env.VITE_API_URL}/updateStatus?servicesID=${servicesID}&servicesStatus=${servicesStatus}`, )
       .then(res=>{
+        if(res.data.modifiedCount>0){
+          notifi()
+          }
         console.log(res, "status update")
       })
     }
@@ -35,9 +40,9 @@ const ServiceToDoTabble = ({services, idx, servicesStatus, setServicesStatus, se
                 setServicesStatus(e.target.value)
                 setServicesID(_id)
               }}
-              value={servicesStatus}
-              name='category'
-              id='category'
+              // value={servicesStatus}
+              // name='category'
+              // id='category'
               className='border p-4 rounded-lg text-black'
             >
               <option className="text-rose-300 " >{status}</option>

@@ -14,11 +14,13 @@ import AllServices from '../components/ShowAll/AllServices/AllServices'
 import ViewDetail from '../components/ViewDetail/ViewDetail'
 import axios from 'axios'
 import UpdateServices from '../components/ManageService/UpdateServices'
+import Error from '../components/ErrorPages/Error'
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<Error></Error>,
         children:[
             {
                 path:'/',

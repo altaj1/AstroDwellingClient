@@ -11,7 +11,7 @@ import useAuth from "../../hooks/useAuth";
 const ServicesTabble = ({services, idx, servicess, setServicess, reload, setReload}) => {
     
 
-    const { area, _id, description, price, provider, serviceName, postedTime, serviceImg } =
+    const { area, _id, price, serviceName, postedTime} =
     services;
     const {user} = useAuth()
     // const [remServices, setRemServices] =useState([])
@@ -32,7 +32,7 @@ const ServicesTabble = ({services, idx, servicess, setServicess, reload, setRelo
                 console.log(_id)
                 axios.delete(`${import.meta.env.VITE_API_URL}/services-delete/${_id}`)
                 .then(data =>{
-                    console.log(data, "jalsdjflkj")
+                    console.log(data, "delete")
                     if (data.data.deletedCount > 0) {
                         Swal.fire(
                             'Deleted!',

@@ -10,8 +10,10 @@ const Footer = ({darkMode}) => {
         <div className='container px-6 py-8 mx-auto'>
           <div className='flex flex-col items-center text-center'>
             <div className='flex gap-2 items-center'>
-              <img className='w-auto h-14' src='https://i.ibb.co/kHRLsmw/astro-home-1-removebg-preview-1.png' alt='' />
-              <span className="text-3xl font-semibold">Astro Dwelling</span>
+              <Link to='/'>
+              <img className='w-auto h-20 pt-2' src='https://i.ibb.co/Hxp9yrf/download-removebg-preview-2.png' alt='' />
+              </Link>
+             <Link to='/'> <span className="text-3xl font-semibold inline-block  text-transparent bg-clip-text bg-gradient-to-r from-indigo-900 from-10% via-sky-500 via-30% to-emerald-500 to-90% ...">Astro Dwelling</span></Link>
             </div>
   
             <div className='flex flex-wrap justify-center mt-6 -mx-4'>
