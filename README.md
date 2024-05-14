@@ -4,7 +4,7 @@
 
 ## Category: Service Marketplace
 
-MyWebsiteName is a service marketplace platform designed to connect service providers with customers seamlessly. Here are some key features:
+ Astro Dwelling is a service marketplace platform designed to connect service providers with customers seamlessly. Here are some key features:
 
 - **User-friendly Interface:** Our platform boasts an intuitive and easy-to-navigate interface for both service providers and customers.
 - **Secure Login and Registration:** Users can securely log in or register on the platform, with options for email/password-based login and Google Sign-in.
