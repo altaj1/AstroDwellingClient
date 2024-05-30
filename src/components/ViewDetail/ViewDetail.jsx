@@ -1,19 +1,23 @@
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { Typewriter } from "react-simple-typewriter";
+// import { Typewriter } from "react-simple-typewriter";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import ReactDatePicker from "react-datepicker";
+// import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import BookingModal from "./BookingModal";
 
 const ViewDetail = () => {
-  const [startDate, setStartDate] = useState(new Date());
+
+  const [isOpen, setIsOpen] = useState(false)
+
   const { data } = useLoaderData();
   const { user, setUser } = useAuth();
-  const  navigate = useNavigate()
-  // console.log(data);
+  // const  navigate = useNavigate()
+  // const stripe = useStripe();
+  // const elements = useElements();
+  console.log(data);
   const notify = () => toast("Congratulations Booking Successfully!!");
   const {
     area,
@@ -26,49 +30,11 @@ const ViewDetail = () => {
     _id,
   } = data;
 
-  const handelSubmitt = async (e) => {
-    e.preventDefault();
+  const closeModal = () => {
+    setIsOpen(false)
+  }
 
-    const form = e.target;
-    
-    const area = form.area.value;
-    const takingdate = startDate;
-    const instruction = form.instruction.value;
-    const servicesData = {
-      
-      area,
-      description,
-      
-      takingdate,
-      bookingDate: new Date(),
-      buyer: {
-        userEmail: user?.email,
-        name: user?.displayName,
-        photo: user?.photoURL,
-      },
-      instruction,
-      status: "pending",
-      booked:'true'
-    };
 
-    
-
-    try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/booking/${_id}`,
-        servicesData
-      );
-      console.log(data);
-      if (data.modifiedCount > 0) {
-        notify();
-        form.reset();
-      }
-
-      navigate('/booked-services')
-    } catch (err) {
-      // console.log(err);
-    }
-  };
 
   useEffect(() => {
     if (user) {
@@ -126,13 +92,30 @@ const ViewDetail = () => {
                 <button
                   className="btn bg-blue-300"
                   onClick={() =>
-                    document.getElementById("my_modal_3").showModal()
+                    setIsOpen(true)
                   }
                 >
                   Book Now
                 </button>
                 
               </div>
+
+              <div>
+                <BookingModal
+              isOpen ={isOpen}
+              closeModal={closeModal}
+
+              bookingInfo={{
+                ...data,
+                guest: {
+                  name: user?.displayName,
+                  email: user?.email,
+                  image: user?.photoURL,
+                },
+              }}
+
+              >
+                </BookingModal></div>
             </div>
           </div>
 
@@ -141,10 +124,10 @@ const ViewDetail = () => {
           {/* end */}
           
 
-          <dialog id="my_modal_3" className="modal">
+          {/* <dialog id="my_modal_3" className="modal">
                   <div className="modal-box">
                     <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
+                    
                       <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                         ✕
                       </button>
@@ -289,13 +272,23 @@ const ViewDetail = () => {
                                 />
                                 <hr />
                               </div>
+                              <div className="col-span-full sm:col-span-">
+                                <label className="text-sm">
+                                  Payment method
+                                </label>
+                                <Elements stripePromise={stripePromise}>
+                                  <CheckoutForm>
+                                  </CheckoutForm>
+                                </Elements>
+                                <hr />
+                              </div>
                             </div>
                           </fieldset>
                           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
                             <div className="space-y-2 col-span-full lg:col-span-1">
                               <p className="font-bold">Profile</p>
                               {/* <p className="text-xs">{user?.displayName}</p> */}
-                            </div>
+                            {/* </div>
                             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                               <div className="col-span-full sm:col-span-3">
                                 <label htmlFor="username" className="text-sm">
@@ -349,7 +342,7 @@ const ViewDetail = () => {
                       </section>
                     </div>
                   </div>
-                </dialog>
+                </dialog> */} 
 
         </div>
       </div>

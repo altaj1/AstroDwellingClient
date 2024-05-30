@@ -15,7 +15,7 @@
 
 ## Technologies Used:
 - [Database managment Mongodb](https://cloud.mongodb.com/v2/66235f0763cf5d24a8a344a7#/metrics/replicaSet/6623645cb2259769666b03ae/explorer/touristsDB/spot/find)
-- [Firebase for authentication and database management](https://firebase.google.com/docs/auth?authuser=0&hl=en)
+- [Firebase for authentication ](https://firebase.google.com/docs/auth?authuser=0&hl=en)
 
 - [Node js](https://nodejs.org/en)
 

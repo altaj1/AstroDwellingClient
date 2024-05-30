@@ -127,6 +127,7 @@ const NavBar = ({ setDarkMode, darkMode }) => {
         </div>
         <div className="flex items-center justify-center">
           <Link to='/'><img
+          
             className=" lg:h-16 md:h-16 h-11 pt-2 "
             src="https://i.ibb.co/Hxp9yrf/download-removebg-preview-2.png"
             alt=""
