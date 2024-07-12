@@ -2,6 +2,11 @@
 
 [Live Site URL](https://astro-dwelling.web.app)
 
+###  If you have locally run this prerequisite
+- MongoDB
+- Firebase account
+- This package with credentials must be added to this project
+
 ## Category: Service Marketplace
 
  Astro Dwelling is a service marketplace platform designed to connect service providers with customers seamlessly. Here are some key features:
