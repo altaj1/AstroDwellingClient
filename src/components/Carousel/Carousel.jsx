@@ -9,13 +9,15 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import Slide from './Slide'
+import Search from '../Shared/Search'
 
 
 
 
 export default function Carousel() {
   return (
-    <div className='container mt-0 min-w-full bg-slate-400 mx-auto'>
+   <div>
+     <div className='container mt-20 min-w-full bg-slate-400 mx-auto relative'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -49,6 +51,12 @@ export default function Carousel() {
           />
         </SwiperSlide>
       </Swiper>
+      {/* input to */}
+      <div className='absolute bottom-80  right-40 left-44 z-40'>
+
+      <Search></Search>
+      </div>
     </div>
+   </div>
   )
 }
