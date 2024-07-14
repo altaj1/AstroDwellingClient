@@ -4,7 +4,7 @@
 
 ###  If you have locally run this prerequisite
 - MongoDB
-- Firebase account
+
 - This package with credentials must be added to this project
 
 ## Category: Service Marketplace
@@ -12,7 +12,7 @@
  Astro Dwelling is a service marketplace platform designed to connect service providers with customers seamlessly. Here are some key features:
 
 - **User-friendly Interface:** Our platform boasts an intuitive and easy-to-navigate interface for both service providers and customers.
-- **Secure Login and Registration:** Users can securely log in or register on the platform, with options for email/password-based login and Google Sign-in.
+- **Secure Login and Registration:** Users can securely log in or register on the platform, with email/password-based login options and Google Sign-in.
 - **Comprehensive Service Listings:** Browse through a wide range of services offered by various providers, complete with detailed descriptions and images.
 - **Efficient Booking System:** Book services hassle-free with our efficient booking system, complete with customizable options and instructions.
 - **Personalized Dashboard:** Service providers can manage their services efficiently through a personalized dashboard, allowing for easy editing, updating, and tracking of bookings.
